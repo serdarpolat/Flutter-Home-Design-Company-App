@@ -11,8 +11,10 @@ class CustomDecorativeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 576, max: 1440, data: Metrics.width(context));
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 24),
+      margin: EdgeInsets.only(bottom: 12 + 12 * pad),
       decoration: BoxDecoration(
         color: white,
         boxShadow: [
