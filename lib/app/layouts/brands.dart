@@ -12,32 +12,61 @@ class Brands extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseContainer(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 90),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SvgPicture.asset(
-              'Amazon.svg'.icon,
-              height: 40,
-            ),
-            SvgPicture.asset(
-              'Autodesk.svg'.icon,
-              height: 40,
-            ),
-            SvgPicture.asset(
-              'Google.svg'.icon,
-              height: 40,
-            ),
-            SvgPicture.asset(
-              'Paypal.svg'.icon,
-              height: 40,
-            ),
-            SvgPicture.asset(
-              'Webflow.svg'.icon,
-              height: 40,
-            ),
-          ],
-        ),
+        padding: EdgeInsets.symmetric(vertical: 40 + 50 * normalize(min: 576, max: 1440, data: Metrics.width(context))),
+        child: Metrics.isMobile(context)
+            ? Column(
+                children: [
+                  SvgPicture.asset(
+                    'Amazon.svg'.icon,
+                    height: 40,
+                  ),
+                  const SizedBox(height: 32),
+                  SvgPicture.asset(
+                    'Autodesk.svg'.icon,
+                    height: 40,
+                  ),
+                  const SizedBox(height: 32),
+                  SvgPicture.asset(
+                    'Google.svg'.icon,
+                    height: 40,
+                  ),
+                  const SizedBox(height: 32),
+                  SvgPicture.asset(
+                    'Paypal.svg'.icon,
+                    height: 40,
+                  ),
+                  const SizedBox(height: 32),
+                  SvgPicture.asset(
+                    'Webflow.svg'.icon,
+                    height: 40,
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SvgPicture.asset(
+                    'Amazon.svg'.icon,
+                    height: 40,
+                  ),
+                  SvgPicture.asset(
+                    'Autodesk.svg'.icon,
+                    height: 40,
+                  ),
+                  SvgPicture.asset(
+                    'Google.svg'.icon,
+                    height: 40,
+                  ),
+                  SvgPicture.asset(
+                    'Paypal.svg'.icon,
+                    height: 40,
+                  ),
+                  SvgPicture.asset(
+                    'Webflow.svg'.icon,
+                    height: 40,
+                  ),
+                ],
+              ),
       ),
     );
   }

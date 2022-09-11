@@ -14,16 +14,19 @@ class CompletedProjectInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+    final pad1 = normalize(min: 576, max: 976, data: Metrics.width(context));
+
     return Expanded(
       flex: 2,
       child: SizedBox(
-        height: 320,
+        height: 240 + 80 * pad1,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             item.title.poppins(
-              fontSize: 30,
+              fontSize: 24 + 6 * pad1,
               fontWeight: FontWeight.bold,
               height: 1.5,
             ),
@@ -36,13 +39,13 @@ class CompletedProjectInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           'Budget'.poppins(
-                            fontSize: 18,
+                            fontSize: 14 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: Colors.grey,
                           ),
                           item.budget.poppins(
-                            fontSize: 20,
+                            fontSize: 16 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: greenBg,
@@ -55,13 +58,13 @@ class CompletedProjectInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           'Timespan'.poppins(
-                            fontSize: 18,
+                            fontSize: 14 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: Colors.grey,
                           ),
                           item.timespan.poppins(
-                            fontSize: 20,
+                            fontSize: 16 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: greenBg,
@@ -79,13 +82,13 @@ class CompletedProjectInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           'Status'.poppins(
-                            fontSize: 18,
+                            fontSize: 14 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: Colors.grey,
                           ),
                           item.status.poppins(
-                            fontSize: 20,
+                            fontSize: 16 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: greenBg,
@@ -98,7 +101,7 @@ class CompletedProjectInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           'Size'.poppins(
-                            fontSize: 18,
+                            fontSize: 14 + 4 * pad1,
                             fontWeight: FontWeight.w600,
                             height: 1.5,
                             color: Colors.grey,
@@ -106,13 +109,13 @@ class CompletedProjectInfo extends StatelessWidget {
                           Row(
                             children: [
                               item.size.poppins(
-                                fontSize: 20,
+                                fontSize: 16 + 4 * pad1,
                                 fontWeight: FontWeight.w600,
                                 height: 1.5,
                                 color: greenBg,
                               ),
                               '2'.poppins(
-                                fontSize: 16,
+                                fontSize: 16 + 4 * pad1,
                                 fontWeight: FontWeight.w600,
                                 height: 1.5,
                                 color: greenBg,

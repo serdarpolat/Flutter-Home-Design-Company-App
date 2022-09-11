@@ -7,11 +7,14 @@ class CompletedProjectsTabItem extends StatelessWidget {
     required this.item,
     this.onTap,
     required this.isActive,
+    required this.pad,
   }) : super(key: key);
 
   final CompletedProjectsTabItemModel item;
   final Function()? onTap;
   final bool isActive;
+
+  final double pad;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class CompletedProjectsTabItem extends StatelessWidget {
             ),
           ),
           child: item.title.poppins(
-            fontSize: 16,
+            fontSize: 13 + 3 * pad,
             fontWeight: FontWeight.bold,
             color: isActive ? greenBorder : Colors.grey,
           ),

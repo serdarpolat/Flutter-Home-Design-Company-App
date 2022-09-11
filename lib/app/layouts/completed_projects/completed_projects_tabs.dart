@@ -4,13 +4,16 @@ import 'package:ventura/core/core.dart';
 
 import 'completed_projects_tab_item.dart';
 
-class CompletedProjectsTabs extends ConsumerWidget {
+class CompletedProjectsTabs extends StatelessWidget {
   const CompletedProjectsTabs({
     Key? key,
+    required this.pad,
   }) : super(key: key);
 
+  final double pad;
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -19,20 +22,42 @@ class CompletedProjectsTabs extends ConsumerWidget {
           ),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(tabItems.length, (index) {
-          final item = tabItems[index];
+      child: Metrics.width(context) >= 783
+          ? CompletedProjectsTabList(pad: pad)
+          : SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              controller: ScrollController(),
+              child: CompletedProjectsTabList(pad: pad),
+            ),
+    );
+  }
+}
 
-          return CompletedProjectsTabItem(
-            item: item,
-            isActive: ref.watch(completedProjectsProvider) == item.id,
-            onTap: () {
-              ref.read(completedProjectsProvider.notifier).change(item.id);
-            },
-          );
-        }),
-      ),
+class CompletedProjectsTabList extends ConsumerWidget {
+  const CompletedProjectsTabList({
+    Key? key,
+    required this.pad,
+  }) : super(key: key);
+
+  final double pad;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: List.generate(tabItems.length, (index) {
+        final item = tabItems[index];
+
+        return CompletedProjectsTabItem(
+          pad: pad,
+          item: item,
+          isActive: ref.watch(completedProjectsProvider) == item.id,
+          onTap: () {
+            ref.read(completedProjectsProvider.notifier).change(item.id);
+          },
+        );
+      }),
     );
   }
 }

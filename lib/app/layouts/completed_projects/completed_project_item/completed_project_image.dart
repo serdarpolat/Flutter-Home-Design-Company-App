@@ -14,6 +14,9 @@ class CompletedProjectImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+    final pad1 = normalize(min: 576, max: 976, data: Metrics.width(context));
+
     return Expanded(
       flex: 3,
       child: Stack(
@@ -23,7 +26,7 @@ class CompletedProjectImage extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(right: isImageLeft ? 80 : 0, left: isImageLeft ? 0 : 80),
+                  padding: EdgeInsets.only(right: isImageLeft ? ((36 * pad1) + 54 * pad) : 0, left: isImageLeft ? 0 : ((36 * pad1) + 54 * pad)),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(52),
