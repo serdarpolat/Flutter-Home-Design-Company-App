@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventura/core/core.dart';
 
 import 'image_clider_controller.dart';
 
@@ -28,7 +29,6 @@ class _AboutUsImageSliderState extends State<AboutUsImageSlider> {
       keepPage: false,
       viewportFraction: 0.25,
     );
-
     super.initState();
   }
 
@@ -40,10 +40,17 @@ class _AboutUsImageSliderState extends State<AboutUsImageSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+    double plus = Metrics.isDesktop(context) ? 0 : (0.5 * (1 - normalize(min: 976, max: 1440, data: Metrics.width(context))));
+    _controller = PageController(
+      initialPage: currentPage,
+      keepPage: false,
+      viewportFraction: 0.25 + plus,
+    );
     return Column(
       children: [
         SizedBox(
-          height: 700,
+          height: 600 + 100 * pad,
           child: PageView.builder(
             controller: _controller,
             onPageChanged: (val) => setState(() => currentPage = val),
@@ -53,17 +60,14 @@ class _AboutUsImageSliderState extends State<AboutUsImageSlider> {
               final img = images[index];
 
               return Padding(
-                padding: const EdgeInsets.only(left: 36, right: 36),
+                padding: EdgeInsets.only(left: 36 * pad, right: 36 * pad),
                 child: AnimatedScale(
                   duration: const Duration(milliseconds: 240),
                   scale: currentPage == index ? 1 : 0.75,
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 240),
                     opacity: currentPage == index ? 1 : 0.25,
-                    child: AspectRatio(
-                      aspectRatio: 3 / 4,
-                      child: Image.network(img, fit: BoxFit.cover),
-                    ),
+                    child: Image.network(img, fit: BoxFit.cover),
                   ),
                 ),
               );
