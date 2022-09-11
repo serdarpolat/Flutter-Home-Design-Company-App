@@ -10,9 +10,11 @@ class HowItWorks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isBigScreen = Metrics.isDesktop(context) || Metrics.isTablet(context);
+
     return BaseContainer(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: Metrics.isMobile(context) ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 80),
           'how it works'.toUpperCase().poppins(
@@ -27,14 +29,49 @@ class HowItWorks extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           const SizedBox(height: 48),
-          Row(
-            children: List.generate(
-              cards.length,
-              (index) => HowItWorksCardItem(
-                item: cards[index],
+          if (isBigScreen)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                cards.length,
+                (index) => HowItWorksCardItem(
+                  item: cards[index],
+                ),
               ),
             ),
-          ),
+          if (Metrics.isCompact(context))
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                2,
+                (index) => HowItWorksCardItem(
+                  item: cards[index],
+                ),
+              ),
+            ),
+          if (Metrics.isCompact(context))
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                2,
+                (index) => HowItWorksCardItem(
+                  item: cards[index + 2],
+                ),
+              ),
+            ),
+          if (Metrics.isMobile(context))
+            Column(
+              children: List.generate(
+                cards.length,
+                (index) => Row(
+                  children: [
+                    HowItWorksCardItem(
+                      item: cards[index],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           const SizedBox(height: 80),
         ],
       ),
