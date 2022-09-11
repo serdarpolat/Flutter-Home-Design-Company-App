@@ -1,0 +1,32 @@
+name: ventura
+description: Interior design.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_rating_bar: ^4.0.1
+  flutter_riverpod: ^1.0.4
+  flutter_svg: ^1.1.5
+  font_awesome_flutter: ^10.2.1
+  google_fonts: ^3.0.1
+  simple_gradient_text: ^1.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
