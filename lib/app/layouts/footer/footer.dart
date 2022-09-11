@@ -16,9 +16,15 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+
     return Container(
       width: Metrics.width(context),
-      height: 700,
+      height: (Metrics.isDesktop(context) || Metrics.isTablet(context))
+          ? 644
+          : Metrics.isCompact(context)
+              ? (644 + 130)
+              : (644 + 130 + 321),
       color: greenBg,
       child: Stack(
         clipBehavior: Clip.none,
@@ -33,19 +39,71 @@ class Footer extends StatelessWidget {
                   width: Metrics.width(context),
                   child: Column(
                     children: [
-                      const SizedBox(height: 260),
+                      const SizedBox(height: 240),
                       BaseContainer(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            FooterInfo(),
-                            FooterSiteMap(),
-                            FooterCompany(),
-                            FooterSubscribe(),
-                          ],
-                        ),
+                        child: (Metrics.isDesktop(context) || Metrics.isTablet(context))
+                            ? Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  FooterInfo(),
+                                  FooterSiteMap(),
+                                  FooterCompany(),
+                                  FooterSubscribe(),
+                                ],
+                              )
+                            : Metrics.isCompact(context)
+                                ? Column(
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterInfo(),
+                                          FooterSiteMap(),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 36),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterCompany(),
+                                          FooterSubscribe(),
+                                        ],
+                                      ),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterInfo(),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterSiteMap(),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterCompany(),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 24),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          FooterSubscribe(),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                       ),
-                      const SizedBox(height: 80),
+                      const SizedBox(height: 40),
                     ],
                   ),
                 ),

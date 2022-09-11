@@ -10,6 +10,8 @@ class FooterSubscribe extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,13 +19,13 @@ class FooterSubscribe extends StatelessWidget {
           'Do you have a project?'.poppins(
             fontWeight: FontWeight.bold,
             color: white,
-            fontSize: 24,
+            fontSize: 18 + 6 * pad,
           ),
-          const SizedBox(height: 24),
+          SizedBox(height: 18 + 6 * pad),
           'Leave your email and we will contact you as soon as possible'.poppins(
             color: white,
             fontWeight: FontWeight.w600,
-            fontSize: 16,
+            fontSize: 13 + 3 * pad,
             height: 1.5,
             letterSpacing: 0.5,
           ),

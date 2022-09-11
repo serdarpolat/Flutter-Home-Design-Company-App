@@ -8,9 +8,11 @@ class FooterInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 976, max: 1440, data: Metrics.width(context));
+
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(right: 30),
+        padding: EdgeInsets.only(right: 20 + 10 * pad),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,25 +35,25 @@ class FooterInfo extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 32),
+            SizedBox(height: 24 + 8 * pad),
             '+1 (885) 589 69 85'.poppins(
               color: white,
               fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontSize: 14 + 4 * pad,
               height: 1.5,
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 16 + 8 * pad),
             'info@ventura.com'.poppins(
               color: white,
               fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontSize: 14 + 4 * pad,
               height: 1.5,
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 16 + 8 * pad),
             'Ms. Alice Smith Apartment 1C 213 Derrick Street Boston, MA 02130 USA'.poppins(
               color: white,
               fontWeight: FontWeight.w500,
-              fontSize: 16,
+              fontSize: 13 + 3 * pad,
               height: 1.5,
             ),
           ],

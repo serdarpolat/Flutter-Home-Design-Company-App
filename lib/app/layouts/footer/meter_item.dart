@@ -12,17 +12,13 @@ class MeterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pad = normalize(min: 576, max: 1440, data: Metrics.width(context));
     return Column(
       children: [
-        metric.poppins(
-          fontWeight: FontWeight.w800,
-          fontSize: 10,
-        ),
-        const SizedBox(height: 8),
         Expanded(
           child: Container(
-            width: 2,
-            margin: EdgeInsets.only(top: isTall ? 0 : 24, left: 5, right: 5),
+            width: 1 + 1 * pad,
+            margin: EdgeInsets.only(top: isTall ? 0 : 12 + 12 * pad, left: 2 + 3 * pad, right: 2 + 3 * pad),
             color: textPrimary,
           ),
         ),
