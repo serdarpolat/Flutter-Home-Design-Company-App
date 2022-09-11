@@ -1,6 +1,6 @@
 # Home design company web app
 
-- Coded with [<b>Flutter<b/>](https://flutter.dev/)
+- Coded with [<b>Flutter<b/>](https://flutter.dev/) and ❤
 
 ## Screenshot
 
