@@ -15,7 +15,7 @@ dependencies:
   flutter_riverpod: ^1.0.4
   flutter_svg: ^1.1.5
   font_awesome_flutter: ^10.2.1
-  google_fonts: ^3.0.1
+  google_fonts: ^6.1.0
   simple_gradient_text: ^1.2.3
   url_strategy: ^0.2.0
 
